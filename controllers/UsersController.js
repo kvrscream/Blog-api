@@ -1,4 +1,7 @@
-const User = require("../models/user")
+const mongoose = require("mongoose");
+const User = mongoose.model("user");
+const crypto = require("crypto");
+
 
 module.exports = {
 
@@ -22,7 +25,10 @@ module.exports = {
 
     async createUser(req, res){
         try{
+            let pwd = crypto.createHash("md5").update(req.body.password).digest("hex");
+            req.body.password = pwd;
             let newUser = await User.create(req.body);
+            
             if(newUser){
                 res.json({
                     status: 200,
@@ -42,6 +48,9 @@ module.exports = {
 
     async updateUser(req, res){
         try{
+            let pwd = crypto.createHash("md5").update(req.body.password).digest("hex");
+            req.body.password = pwd;
+            
             let updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
             if(updateUser){
                 res.json({

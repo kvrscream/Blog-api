@@ -1,4 +1,5 @@
-const Pots = require("../models/post")
+const mongoose = require("mongoose");
+const Posts = mongoose.model("Post")
 
 
 module.exports = {

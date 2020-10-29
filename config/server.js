@@ -2,11 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const consign = require("consign");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors())
 
 app.use(express.json());
 
@@ -24,6 +26,7 @@ mongoose.connect(process.env.MONGO,{
 }).catch((ee) => {console.log(ee)});
 
 consign()
+    .include("./models")
     .include("./routes")
     .into(app);
 
