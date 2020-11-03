@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
 
-    async checkToken(req, res){
+    async checkToken(req, res, next){
         let token = req.headers && req.headers["x-token-auth"] ? req.headers["x-token-auth"] : undefined;
 
         if(token){

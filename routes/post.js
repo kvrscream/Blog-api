@@ -13,6 +13,6 @@ module.exports = (app) =>{
 
     app.put("/post/update/:id", TokenController.checkToken, postController.updatePost);
 
-   // app.delete("/post/delete/:id", TokenController.checkToken, postController.);
+    app.delete("/post/delete/:id", TokenController.checkToken, postController.delete);
 
 }

@@ -7,7 +7,6 @@ module.exports = {
 
     async listUsers(req, res){
         let users = await User.find();
-
         res.json({
             status: 200,
             users: users

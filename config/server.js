@@ -12,9 +12,17 @@ app.use(cors())
 
 app.use(express.json());
 
+
 let envPathName = "dev.env";
 require("dotenv").config({
     path: envPathName
+});
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, x-token-auth, Authorization");
+    next();
 });
 
 mongoose.connect(process.env.MONGO,{
@@ -23,7 +31,10 @@ mongoose.connect(process.env.MONGO,{
         password: process.env.PWDA
     },
     useNewUrlParser:true
-}).catch((ee) => {console.log(ee)});
+}).catch((ee) => {"erro => ",console.log(ee)});
+
+
+
 
 consign()
     .include("./models")

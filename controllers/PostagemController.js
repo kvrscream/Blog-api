@@ -56,7 +56,7 @@ module.exports = {
         }
     },
 
-    async updatePost(req, res){
+    async delete(req, res){
         try {
             let id = req.params.id;
 

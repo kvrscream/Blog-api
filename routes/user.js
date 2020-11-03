@@ -3,14 +3,14 @@ const userController = require("../controllers/UsersController");
 
 module.exports = (app) => {
 
-    app.get("/users", userController.listUsers);
+    app.get("/users", (req, res) => TokenController.checkToken(req, res , userController.listUsers));
 
-    app.get("/users/:id", userController.singleUser);
+    app.get("/users/:id", (req, res) => TokenController.checkToken(req, res , userController.singleUser));
 
-    app.post("/users/create", userController.createUser);
+    app.post("/users/create", (req, res) => TokenController.checkToken(req, res , userController.createUser));
 
-    app.put("/users/update/:id", userController.updateUser);
+    app.put("/users/update/:id", (req, res) => TokenController.checkToken(req, res , userController.updateUser));
 
-    app.delete("/users/delete/:id", userController.deleteUser);
+    app.delete("/users/delete/:id", (req, res) => TokenController.checkToken(req, res , userController.deleteUser));
 
 }
