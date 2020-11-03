@@ -9,10 +9,10 @@ module.exports = (app) =>{
 
     app.get("/posts/:id", postController.singlePost);
 
-    app.post("/post/create", TokenController.checkToken, postController.createPost);
+    app.post("/post/create", (req,res) => TokenController.checkToken(req, res, postController.createPost));
 
-    app.put("/post/update/:id", TokenController.checkToken, postController.updatePost);
+    app.put("/post/update/:id", (req,res) => TokenController.checkToken(req, res, postController.updatePost));
 
-    app.delete("/post/delete/:id", TokenController.checkToken, postController.delete);
+    app.delete("/post/delete/:id", (req,res) => TokenController.checkToken(req, res, postController.delete));
 
 }

@@ -9,7 +9,7 @@ module.exports = {
         if(token){
             jwt.verify(token, process.env.TKSECRET, async (erro, decoded) =>{
                 if(erro){
-                    if(erro.name && err.name == "TokenExpiredError"){
+                    if(erro.name && erro.name == "TokenExpiredError"){
                         res.json({
                             status: 401,
                             message: "Token Expirado!"

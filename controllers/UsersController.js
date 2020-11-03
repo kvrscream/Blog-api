@@ -68,7 +68,7 @@ module.exports = {
         }
     },
     
-    async deleteUser(Req, res){
+    async deleteUser(req, res){
         try{
             await User.findByIdAndDelete(req.params.id);
             res.json({
