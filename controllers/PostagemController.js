@@ -30,7 +30,7 @@ module.exports = {
             let newPost = Posts.create(req.body);
             res.json({
                 status: 200,
-                post: post,
+                post: newPost,
                 message: "Postado com sucesso!"
             });
         } catch(erro){
